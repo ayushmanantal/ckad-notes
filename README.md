@@ -79,3 +79,69 @@ Perfect for developers preparing for the CKAD certification or anyone looking to
 - [API Depreciation](./Kubernetes/API%20Depreciation.md)
 
 - [KubeConfig](./Kubernetes/KubeConfig.md)
+
+# Study Materials
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [KodeKloud](https://kodekloud.com/learning-path/ckad/)
+
+# Practice Questions
+
+- [CKAD Exercises](https://github.com/dgkanatsios/CKAD-exercises)
+
+# Practice Environment Setup
+
+## Quick Start with Minikube
+
+For a cost-effective and efficient way to practice Kubernetes locally, I recommend using Minikube. It provides a lightweight Kubernetes implementation that runs on your local machine.
+
+### Why Minikube?
+
+- 🚀 Quick to set up and get started
+- 💻 Runs on Linux, macOS, and Windows
+- 🔧 No need for complex hardware setup
+- 📚 Perfect for learning and development
+- 🆓 Free and open-source
+
+### Installation
+
+1. Install Minikube by following the official guide: [Minikube Installation Documentation](https://minikube.sigs.k8s.io/docs/)
+2. Configure shell aliases for easier usage:
+
+#### For macOS/Linux Users:
+
+Edit your shell configuration file (`~/.bashrc` for Bash or `~/.zshrc` for Zsh):
+
+```bash
+# Add these lines to your shell configuration
+alias k="minikube kubectl --"
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+```
+
+#### For Windows Users:
+
+For Windows PowerShell, create a profile file if you haven't already:
+
+```powershell
+# Create PowerShell profile if it doesn't exist
+if (!(Test-Path -Path $PROFILE)) {
+    New-Item -ItemType File -Path $PROFILE -Force
+}
+
+# Add this line to your PowerShell profile
+Set-Alias -Name k -Value 'minikube kubectl --'
+```
+
+### Verification
+
+After setup, verify your installation:
+
+```bash
+minikube status
+k get nodes
+```
+
+# References
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [KodeKloud](https://kodekloud.com/learning-path/ckad/)
