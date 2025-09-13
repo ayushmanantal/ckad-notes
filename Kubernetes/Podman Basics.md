@@ -1,51 +1,77 @@
 # Podman Basics
 
+Podman (Pod Manager) is a daemonless container engine for developing, managing, and running OCI containers. It's a secure alternative to Docker that can run containers either as root or in rootless mode.
+
+## Why Podman?
+
+- 🔒 Daemonless architecture for better security
+- 🐋 Drop-in replacement for Docker
+- 🔄 Compatible with Docker commands and Dockerfiles
+- 👥 Rootless container execution
+- 🔌 No daemon required for container operations
+
+## Common Operations
+
+### Building and Managing Images
+
+Build and manage container images using Podman commands:
+
 ```bash
-# Building a image
+# Image Building and Management
+# Build a container image from a Dockerfile in current directory
 podman build -t simpleapp .
 
-#Checking the images
+# List all local images
 podman images
 
-#Checking image tree
+# View the layer structure of an image
 podman image tree localhost/simpleapp:latest
 
-#Running a docker image
+# Container Operations
+# Run a container in detached mode with port mapping
 podman run -d --name test -p 8080:80 localhost/simpleapp
 
-#Checking the running image
+# List running containers
 podman ps
 
-# Checking the logs
+# View container logs
 podman logs test
 
-# Checking the output of the container
+# Test container accessibility
 curl 0.0.0.0:8080
 
-# Running a command inside a container
+# Execute commands in running container
 podman exec -it test cat /usr/local/apache2/htdocs/index.html
 
-# Tag the image with ip and port of a private local registry and then push the image to this registry
+# Registry Operations
+# Tag and push image to private registry
 podman tag localhost/simpleapp $registry_ip:5000/simpleapp
 podman push $registry_ip:5000/simpleapp
 
-# Creating a container without starting it 
+# Container Management
+# Create container without starting it
 podman create busbox
 
-# Viewing the container 
+# List all containers (running and stopped)
 podman container ls -a
 
-# Getting the container output in a tar file
+# Export container filesystem as tar
 podman export test --output=output.tar
 
-# Running a pod with image from registry
+# Kubernetes Integration
+# Deploy container from private registry to Kubernetes
 kubectl run simpleapp --image=$registry_ip:5000/simpleapp --port=80
 
-# Reading the credentials from default file
+# Authentication and Secrets
+# Log in to container registry
 podman login --username $YOUR_USER --password $YOUR_PWD docker.io
+
+# View stored credentials
 cat ${XDG_RUNTIME_DIR}/containers/auth.json
 
-# Creating secret using existing login credentials
-kubectl create secret generic mysecret --from-file=.dockerconfigjson=${XDG_RUNTIME_DIR}/containers/auth.json --type=kubernetes.io/dockeconfigjson
+# Create Kubernetes secret from registry credentials
+kubectl create secret generic mysecret \
+  --from-file=.dockerconfigjson=${XDG_RUNTIME_DIR}/containers/auth.json \
+  --type=kubernetes.io/dockeconfigjson
 
 ```

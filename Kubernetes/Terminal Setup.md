@@ -1,4 +1,11 @@
-# Terminal Setup
+# Terminal Setup for Kubernetes
+
+⚠️ **Important Exam Note**:
+The alias `k='kubectl'` is automatically configured in CKAD exam environments. The additional aliases and shortcuts provided below are for reference and daily operations only. It is NOT recommended to spend time setting up these aliases during the exam.
+
+## Overview
+
+This guide provides useful terminal shortcuts and aliases for working with Kubernetes. These configurations can significantly improve your productivity in day-to-day operations.
 
 ## **General Aliases:**
 
@@ -34,7 +41,7 @@ alias kdd='kubectl delete deployment'
 alias kdn='kubectl delete namespace'
 ```
 
-## My Setup
+## Other Useful Aliases
 
 ```bash
 
