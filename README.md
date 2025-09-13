@@ -87,7 +87,7 @@ Perfect for developers preparing for the CKAD certification or anyone looking to
 
 # Practice Questions
 
-- [CKAD Exercises](https://github.com/dgkanatsios/CKAD-exercises)
+**[CKAD Exercises](https://github.com/dgkanatsios/CKAD-exercises)**
 
 # Practice Environment Setup
 
